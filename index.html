@@ -30,6 +30,11 @@
 		}
 	</style>
 	<style id='wp-block-library-inline-css'>
+		@font-face {
+			font-family: "ZonaPro";
+			src: url("/assets/fonts/zonapro-regular-webfont.woff2") format("woff2");
+		}
+
 		:root {
 			--wp-admin-theme-color: #007cba;
 			--wp-admin-theme-color--rgb: 0, 124, 186;
@@ -973,7 +978,8 @@
 	<link rel="https://api.w.org/" href="wp-json/index.html" />
 	<link rel="alternate" type="application/json" href="wp-json/wp/v2/pages/10" />
 	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc.php%3Frsd" />
-	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://MatheusMines.com/wp-includes/wlwmanifest.xml" />
+	<link rel="wlwmanifest" type="application/wlwmanifest+xml"
+		href="https://MatheusMines.com/wp-includes/wlwmanifest.xml" />
 	<meta name="generator" content="WordPress 6.2" />
 	<link rel="canonical" href="index.html" />
 	<link rel='shortlink' href='index.html' />
@@ -1129,46 +1135,36 @@
 									<title>MINES</title>
 									<style>
 										.cadastre-aqui {
-											background-color: blue;
-											/* Define a cor de fundo */
-											color: #ffffff;
-											/* Define a cor do texto */
-											border: 2px solid blue;
-											/* Adiciona uma borda */
-											border-radius: 0.25rem;
-											/* Define o raio da borda */
-											padding: 0.5rem 1rem;
-											/* Adiciona espaço interno */
-											font-size: 1rem;
-											/* Define o tamanho da fonte */
-											text-decoration: none;
-											/* Remove sublinhado do link */
-											cursor: pointer;
-											/* Transforma o ponteiro do mouse em mãozinha */
+											background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #c62b2b;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
 										}
 
 										.cadastre-aqui:hover {
-											background-color: #218838;
-											/* Muda a cor de fundo quando o mouse passa por cima */
-											border-color: #218838;
-											/* Muda a cor da borda quando o mouse passa por cima */
+											background-color: #c62b2b;
+  color: #ffffff;
 										}
 
 										body {
-											font-family: Arial, sans-serif;
+
+											font-family: "ZonaPro", sans-serif;
 											display: flex;
 											justify-content: center;
 											align-items: center;
-											height: 100vh;
 											margin: 0;
-											background-color: #00336a;
+											background: linear-gradient(to right, #4d3434, #2d1919);
 										}
 
 										.container {
 											display: flex;
 											flex-direction: column;
 											align-items: center;
-											background-color: #007bff;
+											background: linear-gradient(to right, #4d3434, #2d1919);
 											padding: 2rem;
 											border-radius: 1rem;
 											box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -1242,18 +1238,19 @@
 											align-items: center;
 											width: 100%;
 											height: 100%;
-											background-color: rgba(255, 255, 255, 0.3);
+											background-color: rgb(77, 27, 27);
+										
+											background-position: center;
 											border-radius: 1rem;
 											z-index: 2;
 											opacity: 0;
-											transition: opacity 0.3s ease-in-out;
 										}
 
 										.status {
 											font-size: 24px;
 											font-weight: bold;
 											text-align: center;
-											color: #00336a;
+											color: #ffffff;
 											animation: fadeInOut 6s ease-in-out;
 										}
 
@@ -1271,16 +1268,19 @@
 										}
 
 										.generate-opportunity {
-											background-color: #28a745;
+											background-color: #c62b2b;
 											color: white;
 											padding: 0.5rem 1rem;
 											font-size: 1rem;
 											border-radius: 0.25rem;
 											border: none;
 											cursor: pointer;
+											font-weight: bold;
 										}
 
-										.generate-opportunity:hover
+										.generate-opportunity:hover {
+											background-color: #db3b3b;
+										}
 									</style>
 								</head>
 
@@ -1291,8 +1291,21 @@
 												src="https://cdn.discordapp.com/attachments/1102039070328229958/1102308288974028892/theus.png"
 												alt="Oportunidade Única Identificada">
 										</div>
-										<div id="text">
-											<p id="texto" class="texto"><b>💣Apostar: </b>3 Minas</p>
+										<style>
+											#texta {
+												display: flex;
+												align-items: center;
+												justify-content: center;
+												flex-direction: row;
+												text-align: center;
+												margin-bottom: 20px;
+											}
+										</style>
+										<b style="color: #fff;">MINAS</b>
+										<div id="texta">
+
+											<img src="/assets/mines-off.svg" alt="" srcset="" width="30">
+											<b style="color: #fff; font-size: 30px; margin-left: 10px;">3</b>
 										</div>
 										<div id="game-wrapper" class="game-wrapper">
 											<div id="board" class="board"></div>
@@ -1314,6 +1327,9 @@
 											<a href="https://sunybet.com/?v=6W3E4F7BRPM" target="_blank"
 												class="cadastre-aqui">CADASTRE-SE PARA JOGAR</a>
 										</div>
+
+										<iframe src="https://sunybet.com/?v=6W3E4F7BRPM" height="500"
+											frameborder="0"></iframe>
 
 										<script>document.getElementById("generate-opportunity").addEventListener("click", function () {
 												var button = document.getElementById("generate-opportunity");
@@ -1348,7 +1364,7 @@
 												}, (_, i) => grid.slice(i * 5, i * 5 + 5));
 											}
 											function renderBoard(board) {
-												boardElement.innerHTML = board.map((row) => row.map((cell) => `<div><img decoding="async" src="${cell === "💎" ? "https://cdn.discordapp.com/attachments/1101270541211537492/1101270828148076564/diamond.png" : "https://cdn.discordapp.com/attachments/1101270541211537492/1101270828437479464/empty.png"}" alt="${cell}"></div>`).join("")).join("");
+												boardElement.innerHTML = board.map((row) => row.map((cell) => `<div><img decoding="async" src="${cell === "💎" ? "assets/diamond.svg" : "assets/occult.svg"}" alt="${cell}"></div>`).join("")).join("");
 											}
 											function handleClickGenerateOpportunity() {
 												overlayElement.style.display = "block";
